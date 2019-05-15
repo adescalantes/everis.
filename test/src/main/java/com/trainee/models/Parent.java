@@ -15,8 +15,11 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "parents")
+@Data
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Parent {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,75 +46,5 @@ public class Parent {
   @ManyToMany(cascade = CascadeType.ALL)
   @JoinTable(name = "student_parents", joinColumns = @JoinColumn(name = "parent_id", referencedColumnName = "parent_id"), inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName = "student_id"))
   private Set<Student> student;
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public String getGender() {
-    return gender;
-  }
-
-  public void setGender(String gender) {
-    this.gender = gender;
-  }
-
-  public String getFirstName() {
-    return firstName;
-  }
-
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
-
-  public String getMiddleName() {
-    return middleName;
-  }
-
-  public void setMiddleName(String middleName) {
-    this.middleName = middleName;
-  }
-
-  public String getLastName() {
-    return lastName;
-  }
-
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
-
-  public String getOtherParentDetails() {
-    return otherParentDetails;
-  }
-
-  public void setOtherParentDetails(String otherParentDetails) {
-    this.otherParentDetails = otherParentDetails;
-  }
-
-  public Set<Student> getStudent() {
-    return student;
-  }
-
-  public void setStudent(Set<Student> student) {
-    this.student = student;
-  }
-
-  public Parent(int id, String gender, String firstName, String middleName, String lastName, String otherParentDetails,
-      Set<Student> student) {
-    this.id = id;
-    this.gender = gender;
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.otherParentDetails = otherParentDetails;
-    this.student = student;
-  }
-
-  public Parent() {
-  }
 
 }

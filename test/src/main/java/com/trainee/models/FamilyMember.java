@@ -11,8 +11,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "family_members")
+@Data
 public class FamilyMember {
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,54 +39,4 @@ public class FamilyMember {
   @JoinColumn(name = "student_id", referencedColumnName = "student_id")
   private Student student;
 
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public Family getFamily() {
-    return family;
-  }
-
-  public void setFamily(Family family) {
-    this.family = family;
-  }
-
-  public String getParentOrStudent() {
-    return parentOrStudent;
-  }
-
-  public void setParentOrStudent(String parentOrStudent) {
-    this.parentOrStudent = parentOrStudent;
-  }
-
-  public Parent getParent() {
-    return parent;
-  }
-
-  public void setParent(Parent parent) {
-    this.parent = parent;
-  }
-
-  public Student getStudent() {
-    return student;
-  }
-
-  public void setStudent(Student student) {
-    this.student = student;
-  }
-
-  public FamilyMember(int id, @NotNull Family family, String parentOrStudent, Parent parent, Student student) {
-    this.id = id;
-    this.family = family;
-    this.parentOrStudent = parentOrStudent;
-    this.parent = parent;
-    this.student = student;
-  }
-
-  public FamilyMember() {
-  }
 }

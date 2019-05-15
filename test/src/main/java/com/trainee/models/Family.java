@@ -15,8 +15,11 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "families")
+@Data
 public class Family {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
@@ -35,37 +38,6 @@ public class Family {
   @Column(name = "family_name")
   private String familyName;
 
-  public int getId() {
-    return id;
-  }
 
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public Parent getParent() {
-    return parent;
-  }
-
-  public void setParent(Parent parent) {
-    this.parent = parent;
-  }
-
-  public String getFamilyName() {
-    return familyName;
-  }
-
-  public void setFamilyName(String familyName) {
-    this.familyName = familyName;
-  }
-
-  public Family(int id, @NotNull Parent parent, String familyName) {
-    this.id = id;
-    this.parent = parent;
-    this.familyName = familyName;
-  }
-
-  public Family() {
-  }
 
 }
