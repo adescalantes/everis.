@@ -18,7 +18,6 @@ import lombok.Data;
 @Entity
 @Table(name = "students")
 @Data
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Student {
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,5 +46,6 @@ public class Student {
   @JsonIgnore
   @ManyToMany(mappedBy = "student")
   private Set<Parent> parent;
+
 
 }

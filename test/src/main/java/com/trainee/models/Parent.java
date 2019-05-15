@@ -16,11 +16,10 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
-
+@Data
 @Entity
 @Table(name = "parents")
-@Data
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+
 public class Parent {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id

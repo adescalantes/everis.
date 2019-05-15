@@ -17,6 +17,7 @@ public class ParentService {
   @Autowired
   private ParentRepository parentRepository;
 
+ 
   public List<Parent> getAllParent() {
     return parentRepository.findAll();
   }
