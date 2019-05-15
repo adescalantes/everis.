@@ -11,4 +11,5 @@ import com.trainee.models.FamilyMember;
 public interface FamilyMemberRepository extends JpaRepository<FamilyMember, Integer> {
 
   public List<FamilyMember> findByFamilyId(int id);
+  public FamilyMember findById(int id);
 }

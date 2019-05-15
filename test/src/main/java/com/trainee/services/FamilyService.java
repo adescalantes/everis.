@@ -3,10 +3,13 @@ package com.trainee.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.trainee.models.Family;
 import com.trainee.models.FamilyMember;
+import com.trainee.models.Student;
 import com.trainee.repositories.FamilyMemberRepository;
 import com.trainee.repositories.FamilyRepository;
 
@@ -27,9 +30,25 @@ public class FamilyService {
     return familyMemberRepository.findByFamilyId(id);
   }
 
-  public void postFamily(Family family) {
-    familyRepository.save(family);
+  public ResponseEntity<Family> postFamily(Family family) {
+	  if(familyRepository.findById(family.getId())==null) {
+		  familyRepository.save(family);
+			return new ResponseEntity<Family>(HttpStatus.OK);
+		  }
+		  else {
+			 return new ResponseEntity<Family>(HttpStatus.METHOD_NOT_ALLOWED);
+		  }
 
+  }
+
+  public ResponseEntity<Family> putFamily(Family family) {
+	  if(familyRepository.findById(family.getId())!=null) {
+		  familyRepository.save(family);
+		return new ResponseEntity<Family>(HttpStatus.OK);
+	  }else {
+		  return new ResponseEntity<Family>(HttpStatus.METHOD_NOT_ALLOWED);
+	  }
+    
   }
 
   public void deleteFamily(int id) {

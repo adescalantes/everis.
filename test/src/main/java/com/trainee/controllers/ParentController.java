@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,13 +31,13 @@ public class ParentController {
   }
 
   @PostMapping(value = "/parents")
-  public void postParents(@RequestBody @Valid Parent parent) {
-    parentService.postParent(parent);
+  public ResponseEntity<Parent> postParents(@RequestBody @Valid Parent parent) {
+    return parentService.postParent(parent);
   }
 
   @PutMapping(value = "/parents")
-  public void putParents(@RequestBody @Valid Parent parent) {
-    parentService.putParent(parent);
+  public ResponseEntity<Parent> putParents(@RequestBody @Valid Parent parent) {
+    return parentService.putParent(parent);
   }
 
   @DeleteMapping(value = "/parents/{id}")

@@ -5,10 +5,12 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,12 +37,17 @@ public class FamilyController {
   }
 
   @PostMapping("/families")
-  public void postFamilies(@RequestBody @Valid Family family) {
-    familyService.postFamily(family);
+  public ResponseEntity<Family> postFamilies(@RequestBody @Valid Family family) {
+    return familyService.postFamily(family);
+  }
+  
+  @PutMapping("/families")
+  public ResponseEntity<Family> putFamilies(@RequestBody @Valid Family family) {
+	 return familyService.putFamily(family);
   }
 
   @DeleteMapping(value = "/families/{id}")
-  public void deleteParents(@PathVariable("id") int id) {
+  public void deleteFamilies(@PathVariable("id") int id) {
     familyService.deleteFamily(id);
   }
 }
