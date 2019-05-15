@@ -17,10 +17,10 @@ public class FamilyMemberController {
 
   @Autowired
   @Qualifier("familyMemberServ")
-  private FamilyMemberService familyMember;
+  private FamilyMemberService familyMemberService;
 
   @GetMapping("/familyMembers")
   public List<FamilyMember> getFamilies() {
-    return familyMember.getAllFamilyMember();
+    return familyMemberService.getAllFamilyMember();
   }
 }

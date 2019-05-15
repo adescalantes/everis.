@@ -5,7 +5,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,26 +22,25 @@ import com.trainee.services.ParentService;
 public class ParentController {
 
   @Autowired
-  @Qualifier(value = "parentServ")
-  private ParentService parent;
+  private ParentService parentService;
 
   @GetMapping(value = "/parents")
   public List<Parent> getParents() {
-    return parent.getAllParent();
+    return parentService.getAllParent();
   }
 
   @PostMapping(value = "/parents")
-  public boolean postParents(@RequestBody @Valid Parent parent) {
-    return this.parent.postParent(parent);
+  public void postParents(@RequestBody @Valid Parent parent) {
+    parentService.postParent(parent);
   }
 
   @PutMapping(value = "/parents")
-  public boolean putParents(@RequestBody @Valid Parent parent) {
-    return this.parent.putParent(parent);
+  public void putParents(@RequestBody @Valid Parent parent) {
+    parentService.putParent(parent);
   }
 
   @DeleteMapping(value = "/parents/{id}")
-  public boolean deleteParents(@PathVariable("id") int id) {
-    return this.parent.deleteParent(id);
+  public void deleteParents(@PathVariable("id") int id) {
+    parentService.deleteParent(id);
   }
 }

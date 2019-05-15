@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.trainee.models.Parent;
 
-@Repository(value = "parentRepo")
+@Repository
 public interface ParentRepository extends JpaRepository<Parent, Integer> {
 
   public Parent findById(int id);

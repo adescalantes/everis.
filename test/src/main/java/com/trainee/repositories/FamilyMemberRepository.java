@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.trainee.models.FamilyMember;
 
-@Repository(value = "familyMemberRepo")
+@Repository
 public interface FamilyMemberRepository extends JpaRepository<FamilyMember, Integer> {
 
   public List<FamilyMember> findByFamilyId(int id);
