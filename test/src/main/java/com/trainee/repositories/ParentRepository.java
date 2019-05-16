@@ -9,4 +9,5 @@ import com.trainee.models.Parent;
 public interface ParentRepository extends JpaRepository<Parent, Integer> {
 
   public Parent findById(int id);
+
 }

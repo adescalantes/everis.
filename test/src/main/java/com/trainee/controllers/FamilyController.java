@@ -19,6 +19,12 @@ import com.trainee.models.Family;
 import com.trainee.models.FamilyMember;
 import com.trainee.services.FamilyService;
 
+/**
+ * Clase para manejar el RestController de Family
+ * 
+ * @author aescalan
+ * @version 1.0
+ */
 @RestController
 @RequestMapping("/v1")
 public class FamilyController {
@@ -26,28 +32,39 @@ public class FamilyController {
   @Autowired
   private FamilyService familyService;
 
+  /**
+   * Método GET para obtener todas las Families
+   * 
+   * @return Todas las Families almacenadas
+   */
   @GetMapping("/families")
-  public List<Family> getFamilies() {
-    return familyService.getAllFamily();
+  public List<Family> getAll() {
+    return familyService.getAll();
   }
 
+  /**
+   * Método GET para obtener
+   * 
+   * @param id
+   * @return
+   */
   @GetMapping("/families/members/{id}")
   public List<FamilyMember> getFamily(@PathVariable("id") int id) {
-    return familyService.getAllFamilyMembers(id);
+    return familyService.getFamilyMembers(id);
   }
 
   @PostMapping("/families")
-  public ResponseEntity<Family> postFamilies(@RequestBody @Valid Family family) {
+  public ResponseEntity<Family> postFamily(@RequestBody @Valid Family family) {
     return familyService.postFamily(family);
   }
-  
+
   @PutMapping("/families")
-  public ResponseEntity<Family> putFamilies(@RequestBody @Valid Family family) {
-	 return familyService.putFamily(family);
+  public ResponseEntity<Family> putFamily(@RequestBody @Valid Family family) {
+    return familyService.putFamily(family);
   }
 
   @DeleteMapping(value = "/families/{id}")
-  public void deleteFamilies(@PathVariable("id") int id) {
+  public void deleteFamily(@PathVariable("id") int id) {
     familyService.deleteFamily(id);
   }
 }

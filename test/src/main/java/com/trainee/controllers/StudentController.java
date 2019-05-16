@@ -26,22 +26,22 @@ public class StudentController {
   private StudentService studentService;
 
   @GetMapping(value = "/students")
-  public List<Student> getStudents() {
-    return studentService.getAllStudent();
+  public List<Student> getAll() {
+    return studentService.getAll();
   }
 
   @PostMapping(value = "/students")
-  public ResponseEntity<Student> postStudents(@RequestBody @Valid Student student) {
+  public ResponseEntity<Student> postStudent(@RequestBody @Valid Student student) {
     return studentService.postStudent(student);
   }
 
   @PutMapping(value = "/students")
-  public ResponseEntity<Student> putStudents(@RequestBody @Valid Student student) {
+  public ResponseEntity<Student> putStudent(@RequestBody @Valid Student student) {
     return studentService.putStudent(student);
   }
 
   @DeleteMapping(value = "/students/{id}")
-  public void deleteStudents(@PathVariable("id") int id) {
+  public void deleteStudent(@PathVariable("id") int id) {
     studentService.deleteStudent(id);
   }
 }

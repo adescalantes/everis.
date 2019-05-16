@@ -26,22 +26,22 @@ public class ParentController {
   private ParentService parentService;
 
   @GetMapping(value = "/parents")
-  public List<Parent> getParents() {
-    return parentService.getAllParent();
+  public List<Parent> getAll() {
+    return parentService.getAll();
   }
 
   @PostMapping(value = "/parents")
-  public ResponseEntity<Parent> postParents(@RequestBody @Valid Parent parent) {
+  public ResponseEntity<Parent> postParent(@RequestBody @Valid Parent parent) {
     return parentService.postParent(parent);
   }
 
   @PutMapping(value = "/parents")
-  public ResponseEntity<Parent> putParents(@RequestBody @Valid Parent parent) {
+  public ResponseEntity<Parent> putParent(@RequestBody @Valid Parent parent) {
     return parentService.putParent(parent);
   }
 
   @DeleteMapping(value = "/parents/{id}")
-  public void deleteParents(@PathVariable("id") int id) {
+  public void deleteParent(@PathVariable("id") int id) {
     parentService.deleteParent(id);
   }
 }

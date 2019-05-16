@@ -26,18 +26,16 @@ public class Family {
   @Column(name = "family_id")
   private int id;
 
-  @JsonIgnore
   @OneToOne
   @NotNull
   @JoinColumn(name = "parent_id", referencedColumnName = "parent_id")
   private Parent parent;
 
+  @JsonIgnore
   @OneToMany(mappedBy = "family")
   private List<FamilyMember> familyMember;
 
   @Column(name = "family_name")
   private String familyName;
-
-
 
 }

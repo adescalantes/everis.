@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.trainee.models.FamilyMember;
 import com.trainee.services.FamilyMemberService;
 
@@ -27,23 +26,23 @@ public class FamilyMemberController {
   private FamilyMemberService familyMemberService;
 
   @GetMapping("/familyMembers")
-  public List<FamilyMember> getFamilies() {
-    return familyMemberService.getAllFamilyMember();
+  public List<FamilyMember> getAll() {
+    return familyMemberService.getAll();
   }
-  
+
   @PostMapping("/familyMembers")
-  public ResponseEntity<FamilyMember> postFamilies(@RequestBody @Valid FamilyMember familyMember) {
+  public ResponseEntity<FamilyMember> postFamilyMember(@RequestBody @Valid FamilyMember familyMember) {
     return familyMemberService.postFamilyMember(familyMember);
   }
-  
+
   @PutMapping("/familyMembers")
-  public ResponseEntity<FamilyMember> putFamilies(@RequestBody @Valid FamilyMember familyMember) {
-	 return familyMemberService.putFamilyMember(familyMember);
+  public ResponseEntity<FamilyMember> putFamilyMember(@RequestBody @Valid FamilyMember familyMember) {
+    return familyMemberService.putFamilyMember(familyMember);
   }
-  
+
   @DeleteMapping(value = "/familyMembers/{id}")
   public void deleteParents(@PathVariable("id") int id) {
-	  familyMemberService.deleteFamilyMember(id);
+    familyMemberService.deleteFamilyMember(id);
   }
 
 }
